@@ -1,8 +1,11 @@
 import data
 import ct
-
 def main():
-# choose what you would like to do
+    """
+    This is a test program entry.
+    You can choose from 'create table & insert test file for csv'、'addlog()'、'failcount()'.
+    """
+    # choose what you would like to do
     choose = input("Choose what you would like to do?\n"
                    "1. Create table &　Insert file\n"
                    "2. addlog\n"
@@ -19,7 +22,10 @@ def main():
         bandwidth = input("bandwidth:")
         #return
         ans = data.addlog(ip, bandwidth)
-        print(ans)
+        if not ans:
+            print("success:", ans)
+        else:
+            print("fail:", ans)
     
     # failcount() -> failcount[24] : collect fail time with array
     elif choose == '3':
@@ -31,8 +37,12 @@ def main():
         # print
         c=0
         for i in count:
-             print(c , i)
-             c+=1
+            s = '\x1b[0m'
+            if i>0:
+                s = '\033[91m'
+
+            print(s + "hours:{:>2d}".format(c)," fail times:", i)
+            c+=1
 
 if __name__ == "__main__":
     main()

@@ -3,7 +3,11 @@ import sys
 import subprocess
 
 def create_table():
-    
+    """
+    1. insert .sql to create table.
+    2. insert the test file of Bandwidth and Device with csv.
+    """
+
     # connect DB
     dbcon = connect_db()
     cursor = dbcon.cursor()
@@ -31,13 +35,17 @@ def create_table():
     dbcon.close()
     
 def connect_db():
+    """
+    Connect to database.
+    """
+
     # enter database   
     global database
 
     if len(sys.argv) > 1 and sys.argv[1] != "":         
         database = sys.argv[1]             
     else:
-        #database = input("Please enter database name: ")  
-        database = "NCPB2.db"
+        database = input("Please enter database name: ")  
+        #database = "NCPB2.db"
         dbcon = sqlite3.connect(database) 
     return dbcon

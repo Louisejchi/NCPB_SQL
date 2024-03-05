@@ -2,6 +2,10 @@ import sqlite3
 import ct
 
 def addlog(ip:str, bandwidth:str):
+    """
+    Insert data into database table(Bandwidth) with 'ip' and 'measured_bandwidth'.
+    Return True/False.
+    """
 
     # connect DB
     dbcon = ct.connect_db()  # modify
@@ -15,12 +19,11 @@ def addlog(ip:str, bandwidth:str):
     dbcon.close()
     return 0
 
-# read file return failcount[24]
 def failcount(day:str, ip:str):
-    
-    #test
-    #time = "2023-01-01"
-    # ip = "10.22.0.2"
+    """
+    Search the result(array[24]) from database table(Device) with 'day' and 'ip'.
+    Return array[24].
+    """
 
     # connect DB
     dbcon = ct.connect_db() # modify
