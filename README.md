@@ -32,6 +32,7 @@
   * 第一次執行 : 請輸入 "1" -> create table & insert test file(.csv)
     ```
     ex,
+    $ python3 first.py
     Choose what you would like to do?
     1. Create table &　Insert file
     2. addlog
@@ -46,6 +47,7 @@
     * 成功會顯示 : 0
     ```
     ex,
+    $ python3 first.py
     Choose what you would like to do?
     1. Create table &　Insert file
     2. addlog
@@ -58,6 +60,7 @@
   * 輸入 "3" -> failcount() -> 輸入 day & ip -> database name
     * 列出 24 小時不符合契約流量次數
     ```
+    $ python3 first.py
     ex,
     Choose what you would like to do?
     1. Create table &　Insert file
