@@ -3,19 +3,15 @@
   *  Bandwidth.sql : 測試時發現需要再加上 'localtime' 才會顯示正確時間
 
   original :
-
-    ```
+  ```
         day DATETIME DEFAULT (STRFTIME('%Y-%m-%d', CURRENT_TIMESTAMP)),
         hms DATETIME DEFAULT (STRFTIME('%H:%M:%S', CURRENT_TIMESTAMP)),
-    ```
-    
-   modify:
-
-    ```
+  ```
+  modify:
+  ```
         day DATETIME DEFAULT (STRFTIME('%Y-%m-%d', CURRENT_TIMESTAMP, 'localtime')),
         hms DATETIME DEFAULT (STRFTIME('%H:%M:%S', CURRENT_TIMESTAMP, 'localtime')),
-
-    ```
+  ```
 2. Device.sql
 
 # file : .csv -> 測試檔
