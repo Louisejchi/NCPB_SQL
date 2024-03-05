@@ -9,7 +9,8 @@ def main():
     choose = input("Choose what you would like to do?\n"
                    "1. Create table &　Insert file\n"
                    "2. addlog\n"
-                   "3. failcount\n")
+                   "3. failcount\n
+                   enter:")
     
     # create_table() : create table and insert test file
     if choose == '1':
