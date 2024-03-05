@@ -34,11 +34,41 @@
 1. `git clone https://github.com/Louisejchi/NCPB_SQL.git`
 2. `python3 first.py`
   * 第一次執行 : 請輸入 "1" -> create table & insert test file(.csv)
+    ```
+    Choose what you would like to do?
+    1. Create table &　Insert file
+    2. addlog
+    3. failcount
+    enter : 1
+    Please enter database name: NCPB.db
+    Enter csv file of bandwidth: Bandwidth.csv
+    Enter csv file of device: Device.csv
+    ```
+    
   * 輸入 "2" -> addlog() -> 輸入 ip & bandwidth -> database name
-    * 成功會顯示 : 0 
+    * 成功會顯示 : 0
+    ```
+    Choose what you would like to do?
+    1. Create table &　Insert file
+    2. addlog
+    3. failcount
+    enter : 2
+    ip : 10.22.0.1
+    bandwidth : 1
+    Please enter database name: NCPB.db
+    ```
   * 輸入 "3" -> failcount() -> 輸入 day & ip -> database name
     * 列出 24 小時不符合契約流量次數
-   
+    ```
+    Choose what you would like to do?
+    1. Create table &　Insert file
+    2. addlog
+    3. failcount
+    enter : 3
+    day : 2024-01-01
+    ip : 10.22.0.1
+    Please enter database name: NCPB.db
+    ```
 # Memo
 * 若測試結果符合需求，需把 data.py 和 ct.py 放在同個目錄底下，因為 data.py 裡面需要放在 ct.py 裡的 connect database function。
  
