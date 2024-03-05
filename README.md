@@ -72,7 +72,7 @@
     Please enter database name: NCPB.db
     ```
 # Memo
-* 若測試結果符合需求，需把 data.py 和 ct.py 放在同個目錄底下，因為 data.py 裡面需要放在 ct.py 裡的 connect database function。
+* 若測試結果符合需求，需把 data.py 和 ct.py 放在同個目錄底下，因為 data.py 裡有呼叫 ct.py 裡的 connect database function。(因為不確定原本學姊的程式碼有沒有這個的部分(connect database function)，所以我先寫)
 * 若要快速查看 module 中的 funciton 介紹，可啟動 python3 直譯器
 ```
 ex,
