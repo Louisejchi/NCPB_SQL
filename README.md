@@ -1,14 +1,15 @@
 # file : .sql -> 用來 create table
 1. Bandwidth.sql
   *  Bandwidth.sql : 測試時發現需要再加上 'localtime' 才會顯示正確時間
-    original :
+
+  original :
 
     ```
         day DATETIME DEFAULT (STRFTIME('%Y-%m-%d', CURRENT_TIMESTAMP)),
         hms DATETIME DEFAULT (STRFTIME('%H:%M:%S', CURRENT_TIMESTAMP)),
     ```
     
-    modify:
+   modify:
 
     ```
         day DATETIME DEFAULT (STRFTIME('%Y-%m-%d', CURRENT_TIMESTAMP, 'localtime')),
@@ -21,7 +22,7 @@
 1. Bandwidth.csv
 2. Device.csv
 
-# filw : .py 
+# file : .py 
 * first.py : 主程式執行
   * import data
   * import ct   
@@ -30,7 +31,7 @@
 * ct.py : 負責 connect database 、 create table 和 insert file
 
 # Demo:
-1. git clone
+1. `git clone https://github.com/Louisejchi/NCPB_SQL.git`
 2. `python3 first.py`
   * 第一次執行 : 請輸入 "1" -> create table & insert test file(.csv)
   * 輸入 "2" -> addlog() -> 輸入 ip & bandwidth -> database name
