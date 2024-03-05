@@ -60,8 +60,8 @@
   * 輸入 "3" -> failcount() -> 輸入 day & ip -> database name
     * 列出 24 小時不符合契約流量次數
     ```
-    $ python3 first.py
     ex,
+    $ python3 first.py
     Choose what you would like to do?
     1. Create table &　Insert file
     2. addlog
