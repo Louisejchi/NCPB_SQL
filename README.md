@@ -31,6 +31,7 @@
 2. `python3 first.py`
   * 第一次執行 : 請輸入 "1" -> create table & insert test file(.csv)
     ```
+    ex,
     Choose what you would like to do?
     1. Create table &　Insert file
     2. addlog
@@ -44,6 +45,7 @@
   * 輸入 "2" -> addlog() -> 輸入 ip & bandwidth -> database name
     * 成功會顯示 : 0
     ```
+    ex,
     Choose what you would like to do?
     1. Create table &　Insert file
     2. addlog
@@ -56,6 +58,7 @@
   * 輸入 "3" -> failcount() -> 輸入 day & ip -> database name
     * 列出 24 小時不符合契約流量次數
     ```
+    ex,
     Choose what you would like to do?
     1. Create table &　Insert file
     2. addlog
@@ -67,5 +70,12 @@
     ```
 # Memo
 * 若測試結果符合需求，需把 data.py 和 ct.py 放在同個目錄底下，因為 data.py 裡面需要放在 ct.py 裡的 connect database function。
+* 若要快速查看 module 中的 funciton 介紹，可啟動 python3 直譯器
+```
+ex,
+$ python3
+>>> import data
+>>> help(data)
+```
  
 
