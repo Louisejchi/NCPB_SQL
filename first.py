@@ -1,5 +1,6 @@
 import data
 import ct
+from solomon import myInput as input
 def main():
     """
     This is a test program entry.
@@ -9,8 +10,8 @@ def main():
     choose = input("Choose what you would like to do?\n"
                    "1. Create table &　Insert file\n"
                    "2. addlog\n"
-                   "3. failcount\n
-                   enter:")
+                   "3. failcount\n"
+                   "enter:")
     
     # create_table() : create table and insert test file
     if choose == '1':
@@ -19,7 +20,7 @@ def main():
     # addlog() -> True/False : insert data
     elif choose == '2':
         # input
-        ip = input("ip:")
+        ip = input("ip: [{}]", '1.2.3.4')
         bandwidth = input("bandwidth:")
         #return
         ans = data.addlog(ip, bandwidth)
