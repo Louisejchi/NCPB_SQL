@@ -1,6 +1,7 @@
+from solomon import myInput as input
 import data
 import ct
-from solomon import myInput as input
+
 def main():
     """
     This is a test program entry.
@@ -20,11 +21,11 @@ def main():
     # addlog() -> True/False : insert data
     elif choose == '2':
         # input
-        ip = input("ip: [{}]", '1.2.3.4')
+        ip = input("ip: [{}]", '10.22.0.1')
         bandwidth = input("bandwidth:")
         #return
         ans = data.addlog(ip, bandwidth)
-        if not ans:
+        if ans:
             print("success:", ans)
         else:
             print("fail:", ans)
@@ -32,8 +33,8 @@ def main():
     # failcount() -> failcount[24] : collect fail time with array
     elif choose == '3':
         # input
-        day = input("day:")
-        ip = input("ip:")
+        day = input("day:[{}]", '2024-05-05')
+        ip = input("ip:[{}]", '10.22.0.1')
         # return
         count = data.failcount(day, ip)
         # print
