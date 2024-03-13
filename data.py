@@ -12,12 +12,15 @@ def addlog(ip:str, bandwidth:str):
     cursor = dbcon.cursor()  # modify
 
     # insert data
-    cursor.execute("INSERT INTO Bandwidth (ipv4_addr, measured_bandwidth) VALUES(?, ?)", (ip, bandwidth))
-    
-    # close
-    dbcon.commit()
-    dbcon.close()
-    return 0
+    try:
+        cursor.execute("INSERT INTO Bandwidth (ipv4_addr, measured_bandwidth) VALUES(?, ?)", (ip, bandwidth))
+        dbcon.commit()
+        return 1
+    except Exception as e:
+        print("An error occured:", e)
+        return 0
+    finally:
+        dbcon.close()
 
 def failcount(day:str, ip:str):
     """
