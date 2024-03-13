@@ -12,7 +12,7 @@ int randint(int);
 int main(){
 	srand(time(NULL));
 	ofstream outFile("Bandwidth.csv", ios::app);
-	outFile << "ipv4_addr" << "," << "day" << "," << "hms" << "," << "measured_bandwidth" << endl;
+        //outFile << "ipv4_addr" << "," << "day" << "," << "hms" << "," << "measured_bandwidth" << endl;
 	for(int i=0 ; i<100000 ; i++){
 		outFile << ipv4() << "," << day() << "," << hms() << "," << bandwidth() << endl;
 	}
