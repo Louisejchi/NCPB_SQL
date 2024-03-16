@@ -28,6 +28,9 @@ def failcount(day:str, ip:str):
     Return array[24].
     """
 
+    # formate of day is wrong，it should be like "2024-01-01"
+    day = checkdateformat(day)
+
     # connect DB
     dbcon = ct.connect_db()  
     cursor = dbcon.cursor()  
@@ -61,6 +64,18 @@ def failcount(day:str, ip:str):
     dbcon.close()  
    
     return count
+
+def checkdateformat(day:str):
+    from datetime import datetime
+    
+    # 2024:01:01 、2024-1-1 、2024/1/1
+    formats = ["%Y:%m:%d", "%Y-%m-%d", "%Y/%m/%d"]
+    for fmt in formats:
+        try:
+            return datetime.strptime(day, fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            pass
+    raise ValueError(f"Uknown format: {day}") # stop search
 
 def calldevice():
     
