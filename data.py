@@ -66,6 +66,12 @@ def failcount(day:str, ip:str):
     return count
 
 def checkdateformat(day:str):
+    """
+    Check if 'day' is correct.
+    If the format of day is '2024:01:01' or '2024:1:1' or '2024-1-1' or '2024/1/1' or '2024/01/01',
+    this funciton would change the format into '2024-01-01'.
+    If not the above format, it would print error.
+    """
     from datetime import datetime
     
     # 2024:01:01 、2024-1-1 、2024/1/1
@@ -78,7 +84,9 @@ def checkdateformat(day:str):
     raise ValueError(f"Uknown format: {day}") # stop search
 
 def calldevice():
-    
+    """
+    Return all 'device_name' & 'ipv4_addr' in database
+    """
     # connect DB
     dbcon = ct.connect_db() 
     cursor = dbcon.cursor() 
