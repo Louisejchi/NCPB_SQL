@@ -8,8 +8,8 @@ def addlog(ip:str, bandwidth:str):
     """
 
     # connect DB
-    dbcon = ct.connect_db()  # modify
-    cursor = dbcon.cursor()  # modify
+    dbcon = ct.connect_db()  
+    cursor = dbcon.cursor()  
 
     # insert data
     try:
@@ -29,8 +29,8 @@ def failcount(day:str, ip:str):
     """
 
     # connect DB
-    dbcon = ct.connect_db() # modify
-    cursor = dbcon.cursor() # modify
+    dbcon = ct.connect_db()  
+    cursor = dbcon.cursor()  
     
     # collect 'measured_bandwidth' which square with 'ip' and 'day' from table(Bandwidth)
     cursor.execute("SELECT hms,measured_bandwidth FROM Bandwidth WHERE day = ? AND ipv4_addr = ?;", (day, ip,))
@@ -57,8 +57,30 @@ def failcount(day:str, ip:str):
         count.append(fail)
               
     # close
-    dbcon.commit() # modify
-    dbcon.close()  # modify
+    dbcon.commit() 
+    dbcon.close()  
    
     return count
-       
+
+def calldevice():
+    
+    # connect DB
+    dbcon = ct.connect_db() 
+    cursor = dbcon.cursor() 
+
+    listdevc = []
+
+    # execute SQL
+    cursor.execute("SELECT device_name, ipv4_addr FROM Device;")
+    
+    # return { 'device_name':'xxx', 'ipv4_addr':'xxx'}
+    devices = cursor.fetchall()
+    for row in devices:
+        listdevc.append({'device_name': row[0], 'ipv4_addr':row[1]})
+    
+
+    # close
+    dbcon.commit()
+    dbcon.close()  
+
+    return listdevc

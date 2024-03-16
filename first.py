@@ -12,6 +12,7 @@ def main():
                    "1. Create table &　Insert file\n"
                    "2. addlog\n"
                    "3. failcount\n"
+                   "4. calldevice\n"
                    "enter:")
     
     # create_table() : create table and insert test file
@@ -46,6 +47,9 @@ def main():
 
             print(s + "hours:{:>2d}".format(c)," fail times:", i)
             c+=1
+    elif choose == '4':
+        devices = data.calldevice()
+        print(devices)
 
 if __name__ == "__main__":
     main()
