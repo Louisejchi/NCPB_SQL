@@ -13,7 +13,7 @@ def addlog(ip:str, bandwidth:str):
 
     # insert data
     try:
-        cursor.execute("INSERT INTO Bandwidth (ipv4_addr, measured_bandwidth) VALUES(?, ?)", (ip, bandwidth))
+        cursor.execute("INSERT INTO Bandwidth (ipv4_addr, measured_bandwidth) VALUES(?, ?)", (ip, int(bandwidth)))
         dbcon.commit()
         return 1
     except sqlite3.IntegrityError as e:
