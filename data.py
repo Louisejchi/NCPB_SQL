@@ -16,6 +16,12 @@ def addlog(ip:str, bandwidth:str):
         cursor.execute("INSERT INTO Bandwidth (ipv4_addr, measured_bandwidth) VALUES(?, ?)", (ip, bandwidth))
         dbcon.commit()
         return 1
+    except sqlite3.IntegrityError as e:
+        print("An IntegrityError occured:", e)
+        return 0
+    except sqlite3.OperationalError as e:
+        print("An OperationalError occured:", e)
+        return 0
     except Exception as e:
         print("An error occured:", e)
         return 0
