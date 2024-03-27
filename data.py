@@ -1,30 +1,32 @@
 import sqlite3
 import ct
 
-def addlog(ip:str, bandwidth:str):
+def addlog(ip:str, bandwidth:int):
     """
     Insert data into database table(Bandwidth) with 'ip' and 'measured_bandwidth'.
     Return True/False.
     """
-
+    
+    # Check if bandwidth is an integer
+    try:
+        int(bandwidth)
+    except ValueError:
+        print("Error: bandwidth must be an integer.")
+        print("Your input is:", bandwidth)
+        return False
+    
     # connect DB
     dbcon = ct.connect_db()  
     cursor = dbcon.cursor()  
 
     # insert data
     try:
-        cursor.execute("INSERT INTO Bandwidth (ipv4_addr, measured_bandwidth) VALUES(?, ?)", (ip, int(bandwidth)))
+        cursor.execute("INSERT INTO Bandwidth (ipv4_addr, measured_bandwidth) VALUES(?, ?)", (ip, bandwidth))
         dbcon.commit()
-        return 1
-    except sqlite3.IntegrityError as e:
-        print("An IntegrityError occured:", e)
-        return 0
-    except sqlite3.OperationalError as e:
-        print("An OperationalError occured:", e)
-        return 0
+        return True
     except Exception as e:
         print("An error occured:", e)
-        return 0
+        return False
     finally:
         dbcon.close()
 
@@ -43,10 +45,10 @@ def failcount(day:str, ip:str):
     
     # collect 'measured_bandwidth' which square with 'ip' and 'day' from table(Bandwidth)
     cursor.execute("SELECT hms,measured_bandwidth FROM Bandwidth WHERE day = ? AND ipv4_addr = ?;", (day, ip,))
-    bandwidth = [[] for i in range(24)]
     
-
+    
     # store in list(bandwidth)
+    bandwidth = [[] for i in range(24)]
     for row in cursor.fetchall():
         hours = int(row[0].split(":")[0]) # ex, '05:55:55' -> 5
         bandwidth[hours].append(row[1])
@@ -55,15 +57,16 @@ def failcount(day:str, ip:str):
     cursor.execute("SELECT contract_bandwidth FROM Device WHERE ipv4_addr = ?;", (ip,))
     contract_bandwidth = cursor.fetchone()
     
-    #  calculate
+    #  calculating fail and missing traffic
     count = [] 
     for row in bandwidth:
         fail = 0
+        miss = 12 - len(row)
         for m in row:
             #print(contract_bandwidth[0], type(contract_bandwidth[0]))
             if m < contract_bandwidth[0]:
                 fail += 1
-        count.append(fail)
+        count.append((fail, miss))
               
     # close
     dbcon.commit() 
@@ -89,7 +92,7 @@ def checkdateformat(day:str):
             pass
     raise ValueError(f"Uknown format: {day}") # stop search
 
-def calldevice():
+def listdevices():
     """
     Return all 'device_name' & 'ipv4_addr' in database
     """
