@@ -22,30 +22,31 @@ def main():
     # addlog() -> True/False : insert data
     elif choose == '2':
         # input
-        ip = input("ip: [{}]", '10.22.0.1')
-        bandwidth = input("bandwidth:")
+        ip = input("ip:[{}]: ", '10.22.0.1')
+        bandwidth = input("bandwidth: ")
         #return
         ans = data.addlog(ip, bandwidth)
         if ans:
-            print("success:", ans)
+            print("success: ", ans)
         else:
-            print("fail:", ans)
+            print("fail: ", ans)
     
     # failcount() -> failcount[24] : collect fail time with array
     elif choose == '3':
         # input
-        day = input("day:[{}]", '2024-05-05')
-        ip = input("ip:[{}]", '10.22.0.1')
+        day = input("day:[{}]: ", '2024-05-05')
+        ip = input("ip:[{}]: ", '10.22.0.1')
         # return
         count = data.failcount(day, ip)
         # print
         c=0
-        for i in count:
+        print("return:", count)
+        for k,v in count:
             s = '\x1b[0m'
-            if i>0:
+            if k>0:
                 s = '\033[91m'
 
-            print(s + "hours:{:>2d}".format(c)," fail times:", i)
+            print(s + "hours:{:>2d}".format(c)," fail times:", k, " missing times:", v)
             c+=1
     elif choose == '4':
         devices = data.calldevice()
